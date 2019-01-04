@@ -1,0 +1,9 @@
+<apex:page showHeader="false" sidebar="false" controller="wpayc.WorldPayCheckout_VFC" action="{!init}">
+	<apex:composition template="cpm__PaymentFormTemplate">
+		<apex:define name="body">
+			<apex:outputPanel rendered="{!toastMessage != null}">
+				<c:toast severityTheme="error" message="{!toastMessage}" />
+			</apex:outputPanel>
+		</apex:define>
+	</apex:composition>
+</apex:page>

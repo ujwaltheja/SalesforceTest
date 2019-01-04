@@ -1,0 +1,240 @@
+<apex:page standardstylesheets="false" showheader="false" controller="npsp4hub.NPSP4hubSettings_VFC" cache="false">
+    <apex:slds />
+
+    <apex:includeScript value="{!URLFOR($Resource.cpm__javascript, '/js/libs/jquery-2.1.1.js')}" />
+    <script type="text/javascript">
+        $( document ).ready( function() {
+            $( document ).on ( 'click', '.buttonback' , function (e) {
+                $('.switcher').toggle();
+                $(this).parents('.slds-panel').hide();
+            });
+            $( document ).on ( 'click', '.switcher a' , function (e) {
+                $('.switcher').toggle();
+                $( '#'+$(this).attr('target-id')).show();
+            });
+
+           $( document ).on( 'click', '.slds-tabs--default__nav a', function( e ) {
+              var tabToOpen = $( this ).attr( 'id' );
+              // Deactivate all tabs
+              $( '.slds-tabs--default__nav li' ).each( function( index, item ) {
+                  $( item ).removeClass( 'slds-active' );
+                  $( item ).find( 'a' ).attr( 'aria-selected', 'false' );
+              });
+
+              // Open current
+              $( this ).parents( 'li' ).addClass( 'slds-active' );
+              $( this ).attr( 'aria-selected', 'true' );
+              // Open current tab panel
+              $( '.slds-tabs--default__content' ).each( function( index, item ) {
+                  if( $( item ).hasClass( 'slds-show' ) ) {
+                      $( item ).removeClass( 'slds-show' );
+                      $( item ).addClass( 'slds-hide' );
+                  }
+
+                  if( $( item ).attr( 'aria-labelledby' ) == tabToOpen ) {
+                      $( item ).removeClass( 'slds-hide' );
+                      $( item ).addClass( 'slds-show' );
+
+                  }
+              });
+           });
+        });
+       
+    </script>
+    <c:ConfirmModel />
+    <apex:outputPanel >     
+        <div class="slds-tabs--default">
+            <ul class="slds-tabs--default__nav" role="tablist">
+                <li class="slds-tabs--default__item slds-text-title--caps slds-active" title="General" role="presentation">
+                    <a href="#" role="tab" class="slds-tabs--default__link" id="general" tabindex="-1" aria-selected="false">General Settings</a>
+                </li>               
+                <li class="slds-tabs--default__item slds-text-title--caps" title="Status Mapping" role="presentation">
+                    <a href="#" role="tab" class="slds-tabs--default__link" id="statusMapping" tabindex="0" aria-selected="true">Status Mapping</a>
+                </li>                
+            </ul>
+            <apex:actionStatus id="genericstatus">
+                <apex:facet name="start">
+                    <div class="slds-spinner_container">
+                        <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <apex:outputPanel layout="block" id="message_toast">
+                <c:Toast rendered="{!NOT(ISNULL(toastMessage))}" severityTheme="{!toastType}" message="{!toastMessage}" />
+            </apex:outputPanel>
+            <div class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="general">
+                <div class="slds-content slds-p-around--medium">
+                    <div class="slds-page-header" role="banner">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-has-flexi-truncate">
+                                <div class="slds-media slds-no-space slds-grow">
+                                    <div class="slds-media__figure">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-user"></svg>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p class="slds-text-title--caps slds-line-height--reset">{!$Label.NPSP_4_Hub_Settings}</p>
+                                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="this should match the Record Title">General Settings</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form--stacked slds-panel__section slds-panel">
+                        <apex:form id="settingsForm">
+                            <div class="slds-form--stacked slds-m-top--small">
+                                <apex:pageMessages />
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox" for="{!$Component.oneoff}">
+                                            <apex:inputField id="oneoff" value="{!settings.npsp4hub__Treat_Single_Opportunities_as_One_Off__c}" />
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label">{!$ObjectType.NPSP4Hub_Settings__c.fields.Treat_Single_Opportunities_as_One_Off__c.label}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="sample1">{!$ObjectType.npsp4hub__NPSP4Hub_Settings__c.fields.npsp4hub__Reversed_Opportunity_StageName__c.label}</label>
+                                <div class="slds-form-element__control">
+                                    <apex:selectList styleClass="slds-input slds-is-required" value="{!settings.npsp4hub__Reversed_Opportunity_StageName__c}" multiselect="false" size="1" required="true" label="{!$ObjectType.npsp4hub__NPSP4Hub_Settings__c.fields.npsp4hub__Reversed_Opportunity_StageName__c.label}" >
+                                        <apex:selectOptions value="{!stageNameOptions}" />
+                                    </apex:selectList>
+                                </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="sample1">{!$ObjectType.npsp4hub__NPSP4Hub_Settings__c.fields.npsp4hub__Exclude_Opportunity_RecordTypes__c.label}</label>
+                                    <apex:selectList value="{!selectedOpportunityRecordTypes}" multiselect="true" size="5" styleClass="slds-select">
+                                        <apex:selectOptions value="{!oppItems}"/>
+                                    </apex:selectList>
+                                </div>
+                                <div class="slds-form-element"></div>
+                                <div class="slds-form-element">
+                                    <apex:commandButton styleClass="slds-button slds-button--neutral" action="{!backToCPMSetup}" value="Back" />
+                                    <apex:commandButton styleClass="slds-button slds-button--brand" value="Save" action="{!save}" />
+                                </div>
+                            </div>
+                        </apex:form>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="statusMapping" >
+                <div class="slds-content slds-p-around--medium">
+                    <div class="slds-page-header" role="banner">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-has-flexi-truncate">
+                                <div class="slds-media slds-no-space slds-grow">
+                                    <div class="slds-media__figure">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-user"></svg>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p class="slds-text-title--caps slds-line-height--reset">{!$Label.NPSP_4_Hub_Settings}</p>
+                                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="this should match the Record Title">Status Mapping</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form--stacked slds-panel__section slds-panel">
+                        <apex:form id="statusMappingForm">
+                            <apex:actionFunction name="deleteRecord" action="{!removeSingleRecord}" rerender="message_toast, statusMappingForm">
+                                <apex:param name="recordId" assignTo="{!deleteRecordName}" value=""/>                                                 
+                            </apex:actionFunction> 
+                            <apex:actionFunction name="resetSettings" action="{!resetSettings}" rerender="message_toast, statusMappingForm"/> 
+                            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                <thead>
+                                <tr class="slds-text-title--caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Installment Status">Installment Status</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Opportunity Stage">Opportunity Stage</div>
+                                    </th> 
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Recordtype">Recordtype</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Is primary">Is primary</div>
+                                    </th>                                       
+                                    <th scope="col">
+                                        &nbsp;
+                                    </th>
+                                </tr> 
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!statusRecords}" var="statusRecord" >
+                                        <tr>
+                                            <td valign="top">
+                                                <div class="slds-select_container">
+                                                    <apex:selectList value="{!statusRecord.selectedInstallmentStatus}" multiSelect="false" size="1" styleClass="slds-select" disabled="{!statusRecord.defaultStatus}">
+                                                        <apex:selectOptions value="{!statusRecord.getInstallmentStatusOptions}" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </td>
+                                            <td valign="top">
+                                                <div class="slds-select_container">
+                                                    <apex:selectList value="{!statusRecord.selectedOpportunityStatus}" multiSelect="false" size="1" styleClass="slds-select">
+                                                        <apex:selectOptions value="{!statusRecord.getOpportunityStatusOptions}" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </td>                                   
+                                            <td valign="top">
+                                                <apex:outputPanel layout="none" rendered="{!statusRecord.defaultStatus == false}">
+                                                    <div class="slds-select_container">
+                                                        <apex:selectList value="{!statusRecord.selectedRecordType}" multiSelect="false" size="1" styleClass="slds-select">
+                                                            <apex:selectOptions value="{!statusRecord.getRecordType}" />
+                                                        </apex:selectList>
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td valign="top">
+                                                <label class="slds-checkbox--toggle slds-grid">                                                     
+                                                    <apex:inputcheckbox id="isinstance" styleclass="slds-input" value="{!statusRecord.primaryMapping}" />
+                                                    <span id="toggle-desc" class="slds-checkbox--faux_container" aria-live="assertive" >
+                                                        <span class="slds-checkbox--faux"></span>
+                                                    </span>
+                                                </label>
+                                            </td>                                               
+                                            <td>
+                                                                                
+                                                <apex:outputPanel layout="none" rendered="{!statusRecord.defaultStatus == false}">
+                                                    <apex:CommandLink onClick="showConfirmDialog('Delete', 'Are you sure', deleteRecord, '{!statusRecord.recordName}', function(){}, ''); return false" value="Delete" styleClass="slds-button slds-button--destructive deleteButton"/>                                                     
+                                                </apex:outputPanel>
+                                                
+                                            </td>                                   
+                                        </tr>
+                                    </apex:repeat> 
+                                </tbody>
+                            </table>
+                            <div class="slds-form--stacked slds-m-top--small">
+                                <apex:pageMessages />
+                                
+                                <div class="slds-form-element"></div>
+                                <div class="slds-form-element">
+                                        <script>
+                                            $( document ).ready( function() {
+                                                $('.saveButton').on('click', function(){        
+                                                    $("html, body").animate({
+                                                        scrollTop: 0
+                                                    }, 500);  
+                                                });       
+                                            });
+                                            </script>   
+                                    <apex:commandButton styleClass="slds-button slds-button--neutral" action="{!backToCPMSetup}" value="Back" />
+                                    <apex:commandButton styleClass="slds-button slds-button--brand" value="Add record" action="{!addRecord}" rerender="message_toast, statusMappingForm" />
+                                    <apex:commandButton styleClass="slds-button slds-button--brand saveButton" value="Save" action="{!saveMappings}" rerender="message_toast, statusMappingForm" />
+                                
+                                    <apex:CommandLink onClick="showConfirmDialog('Set / Reset mappings', 'Are you sure! <br/> This will reset all of your customs inserted settings', resetSettings, 'function(){}', function(){}, ''); return false" value="Reset" styleClass="slds-button slds-button--destructive"/>
+                                </div>
+                            </div>
+                        </apex:form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </apex:outputPanel>
+</apex:page>

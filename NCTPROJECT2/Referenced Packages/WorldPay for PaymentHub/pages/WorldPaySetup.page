@@ -1,0 +1,85 @@
+<apex:page showHeader="false" sidebar="false" controller="wpayc.WorldPaySetup_VFC">
+	<apex:slds /> 
+
+	<div class="slds-scope">
+		<apex:actionStatus id="genericstatus">
+            <apex:facet name="start">
+                <div class="slds-spinner_container">
+                    <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div> 
+                </div>
+            </apex:facet>
+        </apex:actionStatus>
+		<div class="slds-modal__content slds-app-launcher__content slds-p-around--medium">
+			<div class="slds-section__title">
+				<h3>WorldPay Setup</h3>
+			</div>
+			<apex:form id="form">
+				<c:toast severityTheme="{!toastType}" message="{!toastMessage}" rendered="{!toastMessage != null}"></c:toast>
+				<div class="slds-panel__section slds-panel">
+					<div class="slds-form--horizontal slds-m-around--large">
+						 <div class="slds-form-element">
+			                <apex:outputLabel value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Endpoint__c.label}" styleClass="slds-form-element__label" />
+			                <div class="slds-form-element__control">
+			                	<apex:inputField value="{!settings.wpayc__Endpoint__c}" styleClass="slds-input" />
+			                    <apex:outputPanel layout="block">
+	                        		<apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Endpoint__c.InlineHelpText}" />
+	                    	</apex:outputPanel>
+			                </div>
+			            </div>
+			            <div class="slds-form-element">
+			                <apex:outputLabel value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Merchant_Code__c.label}" styleClass="slds-form-element__label" />
+			                <div class="slds-form-element__control">
+			                	<apex:inputField value="{!settings.wpayc__Merchant_Code__c}" styleClass="slds-input" />
+			                    <apex:outputPanel layout="block">
+	                        		<apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Merchant_Code__c.InlineHelpText}" />
+	                    	</apex:outputPanel>
+			                </div>
+			            </div>
+			            <div class="slds-form-element">
+			                <apex:outputLabel value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Username__c.label}" styleClass="slds-form-element__label" />
+			                <div class="slds-form-element__control">
+			                	<apex:inputField value="{!settings.wpayc__Username__c}" styleClass="slds-input" />
+			                    <apex:outputPanel layout="block">
+	                        		<apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Username__c.InlineHelpText}" />
+	                    	</apex:outputPanel>
+			                </div>
+			            </div>
+			            <div class="slds-form-element">
+			                <apex:outputLabel value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Base_URL__c.label}" styleClass="slds-form-element__label" />
+			                <div class="slds-form-element__control">
+			                	<apex:inputField value="{!settings.wpayc__Base_URL__c}" styleClass="slds-input" />
+			                    <apex:outputPanel layout="block">
+	                        		<apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Base_URL__c.InlineHelpText}" />
+	                    	</apex:outputPanel>
+			                </div>
+			            </div>
+			            <div class="slds-form-element">
+			                <apex:outputLabel value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Password__c.label}" styleClass="slds-form-element__label" />
+			                <div class="slds-form-element__control">
+			                	<apex:inputSecret redisplay="false" styleclass="slds-input" value="{!newPassword}" />
+			                	<apex:outputPanel layout="block">
+	                        		<apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.wpayc__WorldPay_Settings__c.fields.wpayc__Password__c.InlineHelpText}" />
+	                    	</apex:outputPanel>
+			                </div>
+			            </div>
+			            
+			        </div>
+			        
+					<div class="slds-grid slds-grid--align-center slds-grid--vertical-align-center slds-p-around--large">
+						<apex:outputPanel layout="block" styleClass="slds-form-element__control">
+			            	<apex:commandLink action="{!backToSetup}" value="Back" styleClass="slds-button slds-button--small slds-button--neutral" />			                
+			            </apex:outputPanel>
+			            <apex:outputPanel layout="block" styleClass="slds-form-element__control">
+			                <apex:commandButton id="savesettings" value="Save" status="genericstatus" action="{!saveSettings}" rerender="form" styleClass="slds-button slds-button--small slds-button--brand" />
+			            </apex:outputPanel>
+			        </div>
+				</div>
+				
+			</apex:form>
+		</div>
+	</div>
+</apex:page>

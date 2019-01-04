@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Cancel</fullName>
+        <categories>VF Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Cancel_Installment_Error</fullName>
+        <categories>Save Error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel Installment Error</shortDescription>
+        <value>Installment can&apos;t be cancelled because it is pending for collection or has been collected in the past</value>
+    </labels>
+    <labels>
+        <fullName>Confirm</fullName>
+        <categories>VF Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Confirm</shortDescription>
+        <value>Confirm</value>
+    </labels>
+    <labels>
+        <fullName>Delete_Installment_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Delete Installment Error</shortDescription>
+        <value>You can&apos;t delete this installment</value>
+    </labels>
+    <labels>
+        <fullName>NPSP_4_Hub_Settings</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSP 4 Hub Settings</shortDescription>
+        <value>PaymentHub for NPSP</value>
+    </labels>
+    <labels>
+        <fullName>Update_Installment_Error</fullName>
+        <categories>Save Error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Update Installment Error</shortDescription>
+        <value>Installment can&apos;t be updated because it is pending for collection or has been collected in the past</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_insertable</shortDescription>
+        <value>You do not have permission to insert field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_readable</shortDescription>
+        <value>You do not have permission to read the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_updateable</shortDescription>
+        <value>You do not have permission to update the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_deletable</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_deletable</shortDescription>
+        <value>You do not have permission to delete {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_insertable</shortDescription>
+        <value>You do not have permission to insert {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_readable</shortDescription>
+        <value>You do not have permission to read {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_updateable</shortDescription>
+        <value>You do not have permission to update {0}</value>
+    </labels>
+</CustomLabels>

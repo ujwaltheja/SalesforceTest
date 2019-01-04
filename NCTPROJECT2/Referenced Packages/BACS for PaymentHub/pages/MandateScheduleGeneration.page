@@ -1,0 +1,15 @@
+<apex:page standardController="cpm__Mandate_Schedule__c" docType="HTML-5.0" standardStylesheets="false" extensions="paybacs.MandateScheduleGeneration_VFC" action="{!start}">
+    <apex:slds />
+
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <div class="slds-scope">
+            <apex:outputPanel layout="block" id="message_toast">
+                <c:ToastMessage message="{!toast_message}" severityTheme="{!toast_severity}" />
+            </apex:outputPanel>
+        </div>
+
+        <apex:form >
+            <apex:commandButton value="Go back to Mandate Schedule {!selectedSchedule.Name}" action="{!backToSchedule}" styleClass="slds-button slds-button_brand" style="margin-top:50px;"/>
+        </apex:form>
+    </html>
+</apex:page>

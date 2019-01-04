@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Back_BUtton</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Back BUtton</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>Charge_Error</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Charge Error</shortDescription>
+        <value>There was an error finalising your payment. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>Checkout_Widget_Settings</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Checkout Widget Settings</shortDescription>
+        <value>Checkout Widget Settings</value>
+    </labels>
+    <labels>
+        <fullName>Enter_Secret_Key</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enter Secret Key</shortDescription>
+        <value>Enter Secret Key</value>
+    </labels>
+    <labels>
+        <fullName>General_Settings</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>General Settings</shortDescription>
+        <value>General Settings</value>
+    </labels>
+    <labels>
+        <fullName>Generic_Error</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Generic Error</shortDescription>
+        <value>Something went wrong</value>
+    </labels>
+    <labels>
+        <fullName>Loading</fullName>
+        <categories>VF Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Loading</shortDescription>
+        <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>Preview</fullName>
+        <categories>VF Button</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Preview</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>Save_Button</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save Button</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>Secret_key_filled_in</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Secret key filled in</shortDescription>
+        <value>Secret key filled in. Insert new to overwrite</value>
+    </labels>
+    <labels>
+        <fullName>Webhook_URL</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webhook URL</shortDescription>
+        <value>Webhook URL</value>
+    </labels>
+    <labels>
+        <fullName>Webhook_URL_Helptext</fullName>
+        <categories>VF Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webhook URL Helptext</shortDescription>
+        <value>Copy this URL into your Stripe dashboard under Developers-&gt;Webhooks</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_insertable</shortDescription>
+        <value>You do not have permission to insert field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_readable</shortDescription>
+        <value>You do not have permission to read the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_updateable</shortDescription>
+        <value>You do not have permission to update the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_deletable</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_deletable</shortDescription>
+        <value>You do not have permission to delete {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_insertable</shortDescription>
+        <value>You do not have permission to insert {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_readable</shortDescription>
+        <value>You do not have permission to read {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_updateable</shortDescription>
+        <value>You do not have permission to update {0}</value>
+    </labels>
+</CustomLabels>

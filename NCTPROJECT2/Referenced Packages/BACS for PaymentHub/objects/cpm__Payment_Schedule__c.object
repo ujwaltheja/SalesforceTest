@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <validationRules>
+        <fullName>Target_is_mandatory_for_BACS</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF ( AND ( 
+								ISPICKVAL ( cpm__Payment_Processor__c,  &apos;PaymentHub-BACS&apos; ), 
+								ISBLANK ( TEXT(cpm__Target__c) ) 
+				) , true, false )</errorConditionFormula>
+        <errorDisplayField>cpm__Target__c</errorDisplayField>
+        <errorMessage>Target is mandatory for BACS Payment Schedules</errorMessage>
+    </validationRules>
+</CustomObject>

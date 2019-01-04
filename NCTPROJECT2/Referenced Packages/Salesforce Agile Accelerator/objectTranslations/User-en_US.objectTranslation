@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Certified Product Owner --></label>
+        <name>Certified_Product_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certified Scrum Master --></label>
+        <name>Certified_Scrum_Master__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- GUS User Type --></label>
+        <name>GUS_User_Type__c</name>
+        <picklistValues>
+            <masterLabel>API User</masterLabel>
+            <translation><!-- API User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contractor</masterLabel>
+            <translation><!-- Contractor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Full Time Employee</masterLabel>
+            <translation><!-- Full Time Employee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Team User</masterLabel>
+            <translation><!-- Team User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Adjusts how often you are sent emails about Work.
+
+Bread &amp; Butter:  User comments and added as an Assignee
+Meat &amp; Potatoes: User comments, status changes and added as Assignee
+The Whole Enchilada: All notifications (Default) --></help>
+        <label><!-- Work Notification Level --></label>
+        <name>Notification_Level__c</name>
+        <picklistValues>
+            <masterLabel>Bread &amp; Butter</masterLabel>
+            <translation><!-- Bread &amp; Butter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meat &amp; Potatoes</masterLabel>
+            <translation><!-- Meat &amp; Potatoes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>The Whole Enchilada</masterLabel>
+            <translation><!-- The Whole Enchilada --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Owner Certified Date --></label>
+        <name>Product_Owner_Certified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scrum Master Certified Date --></label>
+        <name>Scrum_Master_Certified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Show All Work Comments --></label>
+        <name>Show_All_Work_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Summary --></label>
+        <name>Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Member Allocation --></label>
+        <name>Team_Member_Allocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Preference --></label>
+        <name>User_Preference__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wall Preference --></label>
+        <name>Wall_Preference__c</name>
+    </fields>
+    <fields>
+        <help><!-- Determines which version of the Work page you will see for Bugs and User Stories. --></help>
+        <label><!-- Work User Interface --></label>
+        <name>Work_User_Interface__c</name>
+        <picklistValues>
+            <masterLabel>Classic</masterLabel>
+            <translation><!-- Classic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Next Generation</masterLabel>
+            <translation><!-- Next Generation --></translation>
+        </picklistValues>
+    </fields>
+</CustomObjectTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>34.0</apiVersion>
+    <label>Toast</label>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>6</minorNumber>
+        <namespace>cpm</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>3</majorNumber>
+        <minorNumber>6</minorNumber>
+        <namespace>npe01</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>3</majorNumber>
+        <minorNumber>9</minorNumber>
+        <namespace>npe03</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>3</majorNumber>
+        <minorNumber>99</minorNumber>
+        <namespace>npsp</namespace>
+    </packageVersions>
+</ApexComponent>

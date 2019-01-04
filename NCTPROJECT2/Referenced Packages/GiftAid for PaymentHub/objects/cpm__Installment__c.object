@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Contact_has_Active_GAD__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF ( 
+AND ( NOT(ISNULL(cpm__Contact__c)), cpm__Contact__r.Active_Gift_Aid_Declarations__c &gt; 0 ), true, false 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contact has Active GAD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Eligible_for_GiftAid_formula__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF ( NOT (ISBLANK(cpm__Contact__c ) ),
+    AND(
+        NOT(ISBLANK( cpm__Due_Date__c )),
+        Contact_has_Active_GAD__c, 
+        NOT (GiftAid_Claimed__c), 
+        NOT( Exclude_from_GiftAid__c), 
+        cpm__Amount_Open__c = 0, 
+        TEXT (cpm__Payment_Method__c ) != &apos;GiftAid&apos;,
+        DATE( YEAR (  $Setup.Cur_Fiscal_Year__c.Start_Date__c ) - 4, MONTH ( $Setup.Cur_Fiscal_Year__c.Start_Date__c ) , DAY ($Setup.Cur_Fiscal_Year__c.Start_Date__c ) ) &lt;= cpm__Due_Date__c,
+        OR(
+            AND( TEXT(cpm__Contact__r.Active_Gift_Aid_Declaration__r.Type__c) = &apos;Single&apos; , cpm__Due_Date__c == cpm__Contact__r.Active_Gift_Aid_Declaration__r.Start_Date__c ),
+            AND( TEXT(cpm__Contact__r.Active_Gift_Aid_Declaration__r.Type__c) = &apos;Ongoing&apos;, OR( ISBLANK (cpm__Contact__r.Active_Gift_Aid_Declaration__r.Start_Date__c) , cpm__Contact__r.Active_Gift_Aid_Declaration__r.Start_Date__c &lt;= cpm__Due_Date__c ))
+        )
+    )
+,
+    false
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Eligible for GiftAid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Exclude_from_GiftAid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Exclude from GiftAid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Start__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The fiscal year start based on Due Date</description>
+        <externalId>false</externalId>
+        <label>Fiscal Year Start</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GA_Claim_Total__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>GA Claim Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GiftAid_Claimed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>GiftAid Claimed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Gift_Aid_Declaration__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Gift Aid Declaration</label>
+        <referenceTo>Gift_Aid_Declaration__c</referenceTo>
+        <relationshipLabel>Installments</relationshipLabel>
+        <relationshipName>Installments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Related_Transaction__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Related Transaction</label>
+        <referenceTo>cpm__Installment__c</referenceTo>
+        <relationshipLabel>Installments</relationshipLabel>
+        <relationshipName>Installments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <recordTypes>
+        <fullName>GiftAid</fullName>
+        <active>true</active>
+        <label>GiftAid</label>
+        <picklistValues>
+            <picklist>cpm__Payment_Processor__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>cpm__Status_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>cpm__Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outstanding</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Partially paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending recollection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refunded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reversed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>
